@@ -1,0 +1,7 @@
+#ifndef SHADER_PATH_H
+#define SHADER_PATH_H
+
+std::string const shader_path = "@PROJECT_SOURCE_DIR@/Assignment-5/src/";
+
+//SHADER_PATH_H
+#endif

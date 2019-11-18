@@ -1,0 +1,7 @@
+#ifndef DATA_PATH_H
+#define DATA_PATH_H
+
+std::string const data_path = "@PROJECT_SOURCE_DIR@/Assignment-6/src/";
+
+//DATA_PATH_H
+#endif
