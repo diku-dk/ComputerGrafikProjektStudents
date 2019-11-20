@@ -72,15 +72,25 @@ Use the 'Quick Start' guide on  https://github.com/Microsoft/vcpkg to install Vc
 
 When Vcpkg is installed, navigate to the root folder of Vcpkg and run the following three commands:
 
+##### For Visual Studio 2017 (32bit versions)
+
 ```console  
-.\vcpkg.exe install glfw3
-.\vcpkg.exe install glew
-.\vcpkg.exe install glm
+.\vcpkg.exe install glfw3:x86-windows
+.\vcpkg.exe install glew:x86-windows
+.\vcpkg.exe install glm:x86-windows
+```
+
+##### For Visual Studio 2019 (64bit versions)
+
+```console  
+.\vcpkg.exe install glfw3:x64-windows
+.\vcpkg.exe install glew:x64-windows
+.\vcpkg.exe install glm:x64-windows
 ```
 
 At the time of writing the latest versions of these packages are 3.3-3, 2.1.0-6 and 0.9.9.5-3, respectively.
 
-Use the ``.\vcpkg.exe list `` command to ensure that these three packages are properly installed. The result of the command should look something like this:
+Use the ``.\vcpkg.exe list `` command to ensure that these three packages are properly installed. The result of the command should look something like this (and similar for Visual Studio 2019):
 
 <center>
 <img src="Documentation/windows/vcpkg-list.png" width="100%">
@@ -111,10 +121,10 @@ the installer.
 <img src="Documentation/windows/cmake-toolchain.png" width="50%">
 </center>
 
-* Click 'Finish' and the configuration process will automatically start. There should be no configuration left to be done and everything should be setup properly now. Should there still be configuration left to be done, then do so now, before clicking 'Configure' again.
-
+* Click 'Finish' and the configuration process will automatically start.
+* The configuration might fail at this point. If so, ensure that the 'VCPKG_TARGET_TRIPLET' value is properly set in the CMake window. It must be set to 'x86-windows' for Visual Studio 2017 and 'x64-windows' for Visual Studio 2019. In other words it must match the versions you chose to download through vcpkg. (If you have downloaded both 32bit and 64bit versions of the packages you may have to manually correct the filepaths for 'GLEW_DIR', 'GLM_DIR' & 'glfw3_DIR' before configurating again.)
+* There should be no configuration left to be done and everything should be setup properly now. Should there still be configuration left to be done, then do so now, before clicking 'Configure' again.
 * Once the configuration has succeeded, click 'Generate'.
-
 * Upon generation success click 'Open Project' to open the project in Visual Studio.
 
 Use Visual Studio to build the project to ensure that everything is setup properly. If build errors occur please revise the above steps.
