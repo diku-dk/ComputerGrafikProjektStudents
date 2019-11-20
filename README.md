@@ -8,8 +8,8 @@ Remark: Current version numbers we used are shown. The framework may work with o
 We used MacPorts (https://www.macports.org/) to install third party dependencies. Afer having installed macport then open a terminal and do write as follows
 
 ```console  
-  sudo port install glew @2.1.0_0+universal
-  sudo port install glfw @3.2.1_0+docs+universal
+  sudo port install glew @2.1.0_0
+  sudo port install glfw @3.2.1_0+docs
   sudo port install glm @0.9.9.0_0
 ```
 
