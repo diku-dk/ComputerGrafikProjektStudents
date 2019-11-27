@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+.DS_Store
+GraphicsProject/bin/*
+GraphicsProject/build/
+GraphicsProject/Assignment-1/include/shader_path.h
+GraphicsProject/Assignment-2/include/shader_path.h
+GraphicsProject/Assignment-3/include/shader_path.h
+GraphicsProject/Assignment-4/include/shader_path.h
+GraphicsProject/Assignment-5/include/shader_path.h
+GraphicsProject/Assignment-6/include/data_path.h
+GraphicsProject/Assignment-6/include/shader_path.h
