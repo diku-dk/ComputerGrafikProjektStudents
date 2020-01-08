@@ -123,7 +123,9 @@ GLuint CreateShaderProgram(std::string const& vertexprogFilename, std::string co
  */
 void ValidateShader(GLuint shaderprogID, std::string message)
 {
-    std::clog << message << std::endl;
+    if (message.size() > 0) {
+        std::clog << message << std::endl;
+    }
     
     GLint gridvalidationsuccess = 0;
     glValidateProgram(shaderprogID);

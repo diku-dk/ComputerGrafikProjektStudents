@@ -297,44 +297,6 @@ int main()
             }
         }
 
-        for (int i = 0; i < NumberOfCurves; ++i) {
-            glBindVertexArray(LineArrayID[i]);
-
-            // Make a VertexbufferObject for the line segment vertices - it uses the current VertexArrayBuffer!
-            glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[i]);
-
-            // Generate vertices
-            Vertices[i].clear();
-            switch (::method) {
-                case 1:
-                    Sample(G[i], Nsamples, Vertices[i]);
-                    break;
-                case 2:
-                    SampleFWD(G[i], Nsamples, Vertices[i]);
-                    break;
-                case 3:
-                    SubDivide(G[i], Nsubdivisions, Vertices[i]);
-                    break;
-                case 4:
-                    SubDivide(G[i], Epsilon, Vertices[i], MaxFlatnessTests);
-                    break;
-            }
-    
-            // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, Vertices[i].size() * 3 * sizeof(float),
-                         glm::value_ptr(Vertices[i][0]), GL_STATIC_DRAW);
-
-            // Initialize line segment vertex Attributes
-            GLuint vertexattribute = glGetAttribLocation(lineshaderID, "VertexPosition");
-            glEnableVertexAttribArray(vertexattribute);
-            glVertexAttribPointer(vertexattribute, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-
-            // Validate the line shader program
-            ValidateShader(lineshaderID);
-
-            glBindVertexArray(0);
-        }
-    
         // Get locations of Uniforms
         GLuint ctm   = glGetUniformLocation(lineshaderID, "CTM");
         GLuint color = glGetUniformLocation(lineshaderID, "Color");
@@ -358,9 +320,47 @@ int main()
             // Use the Lineshader
             glUseProgram(lineshaderID);
 
-            // Bind the underlying VertexArrayObject
-            glBindVertexArray(LineArrayID[CurrentCurve]);   // It is very important to bind the Vertex Array Object!
+            for (int i = 0; i < NumberOfCurves; ++i) {
+                glBindVertexArray(LineArrayID[i]);
 
+                // Make a VertexbufferObject for the line segment vertices - it uses the current VertexArrayBuffer!
+                glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[i]);
+
+                // Generate vertices
+                Vertices[i].clear();
+                switch (::method) {
+                    case 1:
+                        Sample(G[i], Nsamples, Vertices[i]);
+                        break;
+                    case 2:
+                        SampleFWD(G[i], Nsamples, Vertices[i]);
+                        break;
+                    case 3:
+                        SubDivide(G[i], Nsubdivisions, Vertices[i]);
+                        break;
+                    case 4:
+                        SubDivide(G[i], Epsilon, Vertices[i], MaxFlatnessTests);
+                        break;
+                }
+    
+                // Give our vertices to OpenGL.
+                glBufferData(GL_ARRAY_BUFFER, Vertices[i].size() * 3 * sizeof(float),
+                             glm::value_ptr(Vertices[i][0]), GL_STATIC_DRAW);
+
+                // Initialize line segment vertex Attributes
+                GLuint vertexattribute = glGetAttribLocation(lineshaderID, "VertexPosition");
+                glEnableVertexAttribArray(vertexattribute);
+                glVertexAttribPointer(vertexattribute, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+
+                // Validate the line shader program
+                ValidateShader(lineshaderID);
+
+                glBindVertexArray(0);
+            }
+
+			// Bind the underlying VertexArrayObject
+            glBindVertexArray(LineArrayID[CurrentCurve]);
+            
             // Assign values to the uniforms
             glUniform3f(color, 1.0f, 1.0f, 1.0f);
             glUniformMatrix4fv(ctm, 1, GL_FALSE, glm::value_ptr(CTM));

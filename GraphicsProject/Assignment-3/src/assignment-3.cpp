@@ -104,6 +104,7 @@ std::ostream& operator<<(std::ostream& s, std::vector<glm::vec3> const& data)
  */
 void ResizeCallback(GLFWwindow* Window, int width, int height)
 {
+    glViewport(0, 0, width, height);
     NeedsUpdate = true;
 }
 
@@ -253,7 +254,7 @@ int main()
 
                 glfwSwapBuffers(Window);
                 std::stringstream errormessage;
-                errormessage << "End of loop: " << "assignment1.cpp" << ": " << __LINE__ << ": ";
+                errormessage << "End of loop: " << "assignment3.cpp" << ": " << __LINE__ << ": ";
                 ErrorCheck(errormessage.str());
                 
                 NeedsUpdate = false;
