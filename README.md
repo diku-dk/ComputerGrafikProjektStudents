@@ -151,4 +151,41 @@ To change target right click any of the 'assignment-X' subprojects and click 'Se
 
 ## Installing on Linux
 
-To be done
+How to install third party dependencies will vary depending on the linux distro that you are using. Even if you are using a different package manager the process should be the same.
+
+**Ubuntu:**
+```console  
+  sudo apt install libglew-dev 
+  sudo apt install libglfw-dev 
+  sudo apt install libglm-dev
+```
+
+**Arch:**
+```console  
+  sudo pacman -S glew 
+  sudo pacman -S glfw-x11
+  sudo pacman -S glfw-docs
+  sudo pacman -S glm
+```
+
+
+
+We downloaded CMake ver 3.13.1 from (https://cmake.org/) and installed this. On arch you should be able to get the newest version of CMake using pacman
+```console
+  sudo pacman -S cmake
+```
+
+### CMake
+* Open up a terminal and navigate to `./GraphicsProject`
+* Run
+```console
+  mkdir build
+  cd build
+  cmake ..
+  make all
+```
+
+If CMake fails because it can't find GLM and OpenGL open up `CMakeLists.txt` and edit line 20 from `FIND_PACKAGE(GLM)` to `FIND_PACKAGE(glm)` and line 27 from `FIND_PACKAGE(OPENGL)` to `FIND_PACKAGE(OpenGL)`
+
+
+
