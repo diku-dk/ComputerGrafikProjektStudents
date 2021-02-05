@@ -24,7 +24,7 @@ ELSE()
     MESSAGE(FATAL_ERROR, "Could not find GLM. We recommend using MacPort installation of GLM on Apple. If not possible then try set GLM_DIR to the location where you have installed GLM on your platform.")
 ENDIF()
 FIND_PACKAGE (GLEW  REQUIRED)
-FIND_PACKAGE (OPENGL REQUIRED)
+FIND_PACKAGE (OpenGL REQUIRED)
 
 IF(APPLE)    
     FIND_LIBRARY(COCOA_LIBRARY Cocoa REQUIRED)
@@ -41,7 +41,7 @@ IF(APPLE)
         SET(GLFW_LIBRARIES "glfw3"  CACHE STRING "" FORCE)
     ELSE()    
         # Now try CMake way of getting GLFW if it was installed with Macport
-        FIND_PACKAGE(PKGCONFIG REQUIRED)
+        FIND_PACKAGE(PkgConfig REQUIRED)
         PKG_SEARCH_MODULE(GLFW glfw3)    
         IF( GLFW_LIBRARIES)
             SET(
