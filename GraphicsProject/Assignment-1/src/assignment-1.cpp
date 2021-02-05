@@ -327,6 +327,7 @@ void ResizeCallback(GLFWwindow* Window, int width, int height)
     float dist = std::min(WindowWidth, WindowHeight);
     float pointsize = dist / NGridLines;
     PointSize = pointsize;
+    glViewport(0, 0, width, height);
     NeedsUpdate = true;
   
     //std::cout << "<--ResizeCallback(GLFWwindow* Window, int width, int height)" << std::endl;
@@ -602,7 +603,6 @@ int main()
         glDetachShader(dotshaderID, dotfragmentprogID);
     
         // Now comes the OpenGL core part
-    
 
         // This is where the grid is initialized
     
@@ -621,8 +621,10 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, gridvertexbuffer);
     
         // Give our vertices to OpenGL.
-        glBufferData(GL_ARRAY_BUFFER, GridLines.size() * sizeof(float) * 3, &(GridLines[0][0]), GL_STATIC_DRAW);
-    
+        if (GridLines.size() > 0) {
+            glBufferData(GL_ARRAY_BUFFER, GridLines.size() * sizeof(float) * 3, &(GridLines[0][0]), GL_STATIC_DRAW);
+        }
+        
         // Validate the grid shader program
         GLint gridvalidationsuccess = 0;
         glValidateProgram(lineshaderID);
@@ -668,8 +670,10 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, testlinebuffer);
     
         // Supply the data to the GPU
-        glBufferData(GL_ARRAY_BUFFER, TestLine.size() * sizeof(float) * 3, &(TestLine[0][0]), GL_STATIC_DRAW);
-    
+        if (TestLine.size() > 0) {
+            glBufferData(GL_ARRAY_BUFFER, TestLine.size() * sizeof(float) * 3, &(TestLine[0][0]), GL_STATIC_DRAW);
+        }
+        
         // Initialize grid Attributes
         GLuint testlineattribute = glGetAttribLocation(lineshaderID, "VertexPosition");
         glVertexAttribPointer(testlineattribute, 3, GL_FLOAT, GL_FALSE, 0, 0);
@@ -697,8 +701,10 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, dotvertexbuffer);
     
         // Give our vertices to OpenGL.
-        glBufferData(GL_ARRAY_BUFFER, LinePixels.size() * sizeof(float) * 3, &(LinePixels[0][0]), GL_STATIC_DRAW);
-    
+        if (LinePixels.size() > 0) {
+            glBufferData(GL_ARRAY_BUFFER, LinePixels.size() * sizeof(float) * 3, &(LinePixels[0][0]), GL_STATIC_DRAW);
+        }
+        
         // Validate the dot shader program
         GLint dotvalidationsuccess = 0;
         glValidateProgram(dotshaderID);
@@ -760,7 +766,9 @@ int main()
           
                     glBindVertexArray(GridVertexArrayID);
                     glEnableVertexAttribArray(linearvertexattribute);
-                    glDrawArrays(GL_LINES, 0, GridLines.size());
+                    if (GridLines.size() > 0) {
+                        glDrawArrays(GL_LINES, 0, GridLines.size());
+                    }
                     glDisableVertexAttribArray(linearvertexattribute);
                     glUseProgram(0);
 
@@ -773,10 +781,14 @@ int main()
                     if (CoordinatesChanged) {
                         TestLine = GenererateTestLine(xstart, ystart, xstop, ystop);
                         glBindBuffer(GL_ARRAY_BUFFER, testlinebuffer);
-                        glBufferData(GL_ARRAY_BUFFER, TestLine.size() * sizeof(float) * 3, &(TestLine[0][0]),
-                                     GL_STATIC_DRAW);
+                        if (TestLine.size() > 0) {
+                            glBufferData(GL_ARRAY_BUFFER, TestLine.size() * sizeof(float) * 3, &(TestLine[0][0]),
+                                         GL_STATIC_DRAW);
+                        }
                     }
-                    glDrawArrays(GL_LINES, 0, TestLine.size());
+                    if (TestLine.size() > 0) {
+                        glDrawArrays(GL_LINES, 0, TestLine.size());
+                    }
                     glDisableVertexAttribArray(testlineattribute);
                     glUseProgram(0);
 
@@ -790,10 +802,14 @@ int main()
                     if (CoordinatesChanged) {
                         LinePixels = GenerateLinePixels(xstart, ystart, xstop, ystop);
                         glBindBuffer(GL_ARRAY_BUFFER, dotvertexbuffer);
-                        glBufferData(GL_ARRAY_BUFFER, LinePixels.size() * sizeof(float) * 3, &(LinePixels[0][0]),
-                                     GL_STATIC_DRAW);
+                        if (LinePixels.size() > 0) {
+                            glBufferData(GL_ARRAY_BUFFER, LinePixels.size() * sizeof(float) * 3, &(LinePixels[0][0]),
+                                         GL_STATIC_DRAW);
+                        }
                     }
-                    glDrawArrays(GL_POINTS, 0, LinePixels.size());
+                    if (LinePixels.size() > 0) {
+                        glDrawArrays(GL_POINTS, 0, LinePixels.size());
+                    }
                     glDisableVertexAttribArray(dotvertexattribute);
                     glUseProgram(0);
 
