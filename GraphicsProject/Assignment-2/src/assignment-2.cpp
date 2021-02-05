@@ -102,6 +102,7 @@ void ResizeCallback(GLFWwindow* Window, int width, int height)
     float dist = std::min(WindowWidth, WindowHeight);
     float pointsize = dist / NGridLines;
     PointSize = pointsize;
+    glViewport(0, 0, width, height);
     NeedsUpdate = true;
 }
 
@@ -474,7 +475,9 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, gridvertexbuffer);
     
         // Give our vertices to OpenGL.
-        glBufferData(GL_ARRAY_BUFFER, GridLines.size() * sizeof(float) * 3, &(GridLines[0][0]), GL_STATIC_DRAW);
+        if (GridLines.size() > 0) {
+            glBufferData(GL_ARRAY_BUFFER, GridLines.size() * sizeof(float) * 3, &(GridLines[0][0]), GL_STATIC_DRAW);
+        }
 
         // Validate the line shader program
         ValidateShader(lineshaderID, "Validating the lineshader");
@@ -511,7 +514,9 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, testtrianglebuffer);
 
         // Supply the data to the GPU
-        glBufferData(GL_ARRAY_BUFFER, TestTriangle.size() * sizeof(float) * 3, &(TestTriangle[0][0]), GL_STATIC_DRAW);
+        if (TestTriangle.size() > 0) {
+            glBufferData(GL_ARRAY_BUFFER, TestTriangle.size() * sizeof(float) * 3, &(TestTriangle[0][0]), GL_STATIC_DRAW);
+        }
 
         // Initialize grid Attributes
         GLuint testtriangleattribute = glGetAttribLocation(lineshaderID, "VertexPosition");
@@ -539,8 +544,10 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, dotvertexbuffer);
 
         // Give our vertices to OpenGL.
-        glBufferData(GL_ARRAY_BUFFER, TrianglePixels.size() * sizeof(float) * 3, &(TrianglePixels[0][0]), GL_STATIC_DRAW);
-
+        if (TrianglePixels.size() > 0) {
+            glBufferData(GL_ARRAY_BUFFER, TrianglePixels.size() * sizeof(float) * 3, &(TrianglePixels[0][0]), GL_STATIC_DRAW);
+        }
+        
         // Validate the dot shader program
         ValidateShader(dotshaderID, "Validating the dotshader");
     
@@ -592,7 +599,9 @@ int main()
 
                 glBindVertexArray(GridVertexArrayID);
                 glEnableVertexAttribArray(linearvertexattribute);
-                glDrawArrays(GL_LINES, 0, GridLines.size());
+                if (GridLines.size() > 0) {
+                    glDrawArrays(GL_LINES, 0, GridLines.size());
+                }
                 glDisableVertexAttribArray(linearvertexattribute);
                 glUseProgram(0);
 
@@ -606,11 +615,15 @@ int main()
                 glEnableVertexAttribArray(testtriangleattribute);
                 if (CoordinatesChanged) {
                     TestTriangle = GenererateTestTriangle(x_1, y_1, x_2, y_2, x_3, y_3);
-                    glBindBuffer(GL_ARRAY_BUFFER, testtrianglebuffer);        
-                    glBufferData(GL_ARRAY_BUFFER, TestTriangle.size() * sizeof(float) * 3, &(TestTriangle[0][0]),
-                                 GL_STATIC_DRAW);
+                    glBindBuffer(GL_ARRAY_BUFFER, testtrianglebuffer);
+                    if (TestTriangle.size() > 0) {
+                        glBufferData(GL_ARRAY_BUFFER, TestTriangle.size() * sizeof(float) * 3, &(TestTriangle[0][0]),
+                                     GL_STATIC_DRAW);
+                    }
                 }
-                glDrawArrays(GL_LINE_LOOP, 0, TestTriangle.size());
+                if (TestTriangle.size() > 0) {
+                    glDrawArrays(GL_LINE_LOOP, 0, TestTriangle.size());
+                }
                 glDisableVertexAttribArray(testtriangleattribute);
                 glUseProgram(0);
 
@@ -625,10 +638,14 @@ int main()
                 if (CoordinatesChanged) {
                     TrianglePixels = GenerateTrianglePixels(x_1, y_1, x_2, y_2, x_3, y_3);
                     glBindBuffer(GL_ARRAY_BUFFER, dotvertexbuffer);
-                    glBufferData(GL_ARRAY_BUFFER, TrianglePixels.size() * sizeof(float) * 3, &(TrianglePixels[0][0]),
-                                 GL_STATIC_DRAW);
+                    if (TrianglePixels.size() > 0) {
+                        glBufferData(GL_ARRAY_BUFFER, TrianglePixels.size() * sizeof(float) * 3, &(TrianglePixels[0][0]),
+                                     GL_STATIC_DRAW);
+                    }
                 }
-                glDrawArrays(GL_POINTS, 0, TrianglePixels.size());
+                if (TrianglePixels.size() > 0) {
+                    glDrawArrays(GL_POINTS, 0, TrianglePixels.size());
+                }
                 glDisableVertexAttribArray(dotvertexattribute);
                 glUseProgram(0);
 
