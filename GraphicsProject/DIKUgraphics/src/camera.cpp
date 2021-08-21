@@ -45,10 +45,10 @@ Camera::Camera()
  * \param upper_right_window - a vector which specifies the upper right corner of the window in eye coordinates.
  * \param front_plane - the z-coordinate of the front clipping plane, relative to vrp, i.e. in eye coordinates.
  * \param back_plane - the z-coordinate of the back clipping plane, relative to vrp, i.e. in eye coordinates.
- * \param x_viewport - the x-coordinate of the viewport on the screen.
- * \param y_viewport - the y-coordinate of the viewport on the screen.
- * \param viewport_width - the width of the viewport on the screen.
- * \param viewport_height - the height of the viewport on the screen.
+ * \param x_viewport - the x-coordinate of the viewport on the screen in NDC coordinates.
+ * \param y_viewport - the y-coordinate of the viewport on the screen in NDC coordinates.
+ * \param viewport_width - the width of the viewport on the screen in NDC coordinates.
+ * \param viewport_height - the height of the viewport on the screen in NDC coordinates.
  */
 Camera::Camera(glm::vec3 const& vrp, glm::vec3 const& vpn, glm::vec3 const& vup, glm::vec3 const& prp,
                glm::vec2 const& lower_left_window, glm::vec2 const& upper_right_window,
