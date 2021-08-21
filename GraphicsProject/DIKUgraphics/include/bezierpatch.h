@@ -255,6 +255,20 @@ void PrintIndexMatrix(int PatchNumber,
 int ReadBezierPatches(char const* filename, std::vector<BezierPatch>& BezierPatches);
 
 /**
+ * Computes the transpose of a BezierRow.
+ * \param bezierrow - the BezierRow to be transposed.
+ * \return a BezierColumn which is the transposed of the parameter, bezierrow.
+ */
+BezierColumn Transpose(BezierRow const& bezierrow);
+
+/**
+ * Computes the transpose of a BezierColumn.
+ * \param beziercolumn - the BezierColumn to be transposed.
+ * \return a BezierRow which is the transposed of the parameter, beziercolumn.
+ */
+BezierRow Transpose(BezierColumn const& beziercolumn);
+
+/**
  * \brief Utility Operators
  */
 
