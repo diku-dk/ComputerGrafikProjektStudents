@@ -526,6 +526,32 @@ int ReadBezierPatches(char const* filename, std::vector<BezierPatch>& BezierPatc
     return 0;
 }
 
+/**
+ * \brief Utility Functions
+ */
+
+/**
+ * Computes the transpose of a BezierRow.
+ * \param bezierrow - the BezierRow to be transposed.
+ * \return a BezierColumn which is the transposed of the parameter, bezierrow.
+ */
+BezierColumn Transpose(BezierRow const& bezierrow)
+{
+    BezierColumn beziercolumn(bezierrow[1], bezierrow[2], bezierrow[3], bezierrow[4]);
+    return beziercolumn;
+}
+
+/**
+ * Computes the transpose of a BezierColumn.
+ * \param beziercolumn - the BezierColumn to be transposed.
+ * \return a BezierRow which is the transposed of the parameter, beziercolumn.
+ */
+BezierRow Transpose(BezierColumn const& beziercolumn)
+{
+    BezierRow bezierrow(beziercolumn[1], beziercolumn[2], beziercolumn[3], beziercolumn[4]);
+    return bezierrow;
+}
+
 
 /*
  * \file bezierpatch.h
