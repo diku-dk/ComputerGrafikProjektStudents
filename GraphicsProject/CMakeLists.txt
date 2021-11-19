@@ -18,7 +18,6 @@ IF (MSVC)
     ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS) 
 ENDIF()
 
-#SET( GLM_DIR "my/path/to/glm")
 # set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/local/Include")
 # FIND_PACKAGE (glm REQUIRED PATHS "/usr/local/include")
 FIND_PACKAGE (GLM REQUIRED)
