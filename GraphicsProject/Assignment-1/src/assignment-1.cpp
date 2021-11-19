@@ -318,8 +318,9 @@ std::vector<glm::vec3> GenerateLinePixels(int x1, int y1, int x2, int y2)
  */
 void ResizeCallback(GLFWwindow* Window, int width, int height)
 {
-    //std::cout << "-->ResizeCallback(GLFWwindow* Window, int width, int height)" << std::endl;
-  
+    // std::cout << "-->ResizeCallback(GLFWwindow* Window, int width, int height)" << std::endl;
+    // std::cout << "   width = " << width << ", height = " << height << std::endl; 
+    
     // Set the point size - make the size of the dot be a little smaller than the minimum distance
     // between the grid lines
     WindowWidth  = width;
@@ -327,10 +328,12 @@ void ResizeCallback(GLFWwindow* Window, int width, int height)
     float dist = std::min(WindowWidth, WindowHeight);
     float pointsize = dist / NGridLines;
     PointSize = pointsize;
-    glViewport(0, 0, width, height);
+    int fwidth, fheight;
+    glfwGetFramebufferSize(Window, &fwidth, &fheight);
+    glViewport(0, 0, fwidth, fheight);
     NeedsUpdate = true;
   
-    //std::cout << "<--ResizeCallback(GLFWwindow* Window, int width, int height)" << std::endl;
+    // std::cout << "<--ResizeCallback(GLFWwindow* Window, int width, int height)" << std::endl;
 }
 
 /**
