@@ -104,7 +104,11 @@ std::ostream& operator<<(std::ostream& s, std::vector<glm::vec3> const& data)
  */
 void ResizeCallback(GLFWwindow* Window, int width, int height)
 {
-    glViewport(0, 0, width, height);
+    WindowWidth  = width;
+    WindowHeight = height;
+    int fwidth, fheight;
+    glfwGetFramebufferSize(Window, &fwidth, &fheight);
+    glViewport(0, 0, fwidth, fheight);
     NeedsUpdate = true;
 }
 
