@@ -36,6 +36,7 @@ int WindowWidth  = 500;
 int WindowHeight = 500;
 std::string WindowTitle("Assignment 4: Shading of a Triangle");
 
+bool NeedsUpdate = true;
 
 glm::vec3 Vertices[] = {
     glm::vec3(-33.978017f, -34.985076f,  50.214926f),
@@ -90,7 +91,14 @@ void printtransformedvertices(glm::vec3 Vertices[3], glm::mat4x4 const& CTM)
  * \param height - The new height of the window
  */
 void ResizeCallback(GLFWwindow* Window, int width, int height)
-{}
+{
+    WindowWidth  = width;
+    WindowHeight = height;
+    int fwidth, fheight;
+    glfwGetFramebufferSize(Window, &fwidth, &fheight);
+    glViewport(0, 0, fwidth, fheight);
+    NeedsUpdate = true;
+}
 
 
 /**
