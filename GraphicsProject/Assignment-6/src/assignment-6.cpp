@@ -42,7 +42,7 @@ std::string WindowTitle("Assignment 6: Parametric Surfaces");
 int CurrentSurface   = 0;
 int const NumberOfSurfaces = 12;
 int NVertices[NumberOfSurfaces];
-
+bool NeedsUpdate = true;
 
 /**
  * Prints out a std::vector<glm::vec3> to an output stream
@@ -88,7 +88,14 @@ void printtransformedvertices(std::vector<glm::vec3> const& Vertices, glm::mat4x
  * \param height - The new height of the window
  */
 void ResizeCallback(GLFWwindow* Window, int width, int height)
-{}
+{
+    WindowWidth  = width;
+    WindowHeight = height;
+    int fwidth, fheight;
+    glfwGetFramebufferSize(Window, &fwidth, &fheight);
+    glViewport(0, 0, fwidth, fheight);
+    NeedsUpdate = true;
+}
 
 
 /**
