@@ -102,7 +102,9 @@ void ResizeCallback(GLFWwindow* Window, int width, int height)
     float dist = std::min(WindowWidth, WindowHeight);
     float pointsize = dist / NGridLines;
     PointSize = pointsize;
-    glViewport(0, 0, width, height);
+    int fwidth, fheight;
+    glfwGetFramebufferSize(Window, &fwidth, &fheight);
+    glViewport(0, 0, fwidth, fheight);
     NeedsUpdate = true;
 }
 
