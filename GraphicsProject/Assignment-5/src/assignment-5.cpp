@@ -28,6 +28,8 @@ int   const Nsubdivisions    = 5;
 float const Epsilon          = 0.1f;
 int   const MaxFlatnessTests = 5;
 
+bool NeedsUpdate = true;
+
 #define BUFFER_OFFSET(bytes) ((GLvoid*) (bytes))
 
 // Bezier matrices
@@ -132,7 +134,14 @@ std::ostream& operator<<(std::ostream& s, std::vector<glm::vec3> const& data)
  * \param height - The new height of the window
  */
 void ResizeCallback(GLFWwindow* Window, int width, int height)
-{}
+{
+    WindowWidth  = width;
+    WindowHeight = height;
+    int fwidth, fheight;
+    glfwGetFramebufferSize(Window, &fwidth, &fheight);
+    glViewport(0, 0, fwidth, fheight);
+    NeedsUpdate = true;
+}
 
 
 /**
