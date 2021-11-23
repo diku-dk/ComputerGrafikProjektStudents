@@ -740,7 +740,7 @@ int main()
         float dist = std::min(WindowWidth, WindowHeight);
         float pointsize = dist / NGridLines;
         PointSize = pointsize;
-        std::cout << "PointSize = " << PointSize << std::endl;
+        // std::cout << "PointSize = " << PointSize << std::endl;
     
         // The main loop
         std::cout << std::endl;
@@ -797,7 +797,8 @@ int main()
 
                     glUseProgram(dotshaderID);
                     glUniform1f(dotvertexscale, 0.1f);
-                    glUniform1f(dotvertexpointsize, 2.0f * PointSize);
+                    // glUniform1f(dotvertexpointsize, 2.0f * PointSize);
+                    glUniform1f(dotvertexpointsize, PointSize);
                     glUniform3f(dotfragmentcolor, 0.0f, 0.0f, 0.0f);
           
                     glBindVertexArray(PixelVertexArrayID);
