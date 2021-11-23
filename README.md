@@ -168,6 +168,14 @@ How to install third party dependencies will vary depending on the linux distro 
   sudo pacman -S glm
 ```
 
+**Nix**
+
+This is for linux and mac users using Nix.
+
+```console
+    nix-shell ./GraphicsProject/shell.nix
+```
+This gives a shell with all dependencies correctly linked which is 100% reproducible, remember to use the shell every time you are developing.
 
 
 We downloaded CMake ver 3.13.1 from (https://cmake.org/) and installed this. On arch you should be able to get the newest version of CMake using pacman
@@ -186,6 +194,5 @@ We downloaded CMake ver 3.13.1 from (https://cmake.org/) and installed this. On 
 ```
 
 If CMake fails because it can't find GLM and OpenGL open up `CMakeLists.txt` and edit line 20 from `FIND_PACKAGE(GLM)` to `FIND_PACKAGE(glm)` and line 27 from `FIND_PACKAGE(OPENGL)` to `FIND_PACKAGE(OpenGL)`
-
 
 
