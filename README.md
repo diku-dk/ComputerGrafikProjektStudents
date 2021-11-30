@@ -1,6 +1,20 @@
 # GraphicsProject
 Programming framework for Computer Graphics course at DIKU
 
+## Cloning for your assignments ##
+
+You can clone this into a private repository. First, create a private repository. Then follow these steps (in terminal):
+
+1) `$ git clone --bare git@github.com:diku-dk/ComputerGrafikProjektStudents.git`
+2) `$ cd ComputerGrafikProjektStudents.git`
+3) `$ git push --mirror git@github.com:<your_account>/<your_repo>.git`
+4) `$ cd ..`
+5) `$ rm -rf ComputerGrafikProjektStudents.git/`
+6) `$ git clone git@github.com:<your_account>/<your_repo>.git`
+
+No you have a perfect clone of the public repository, but as a private mirror.
+
+
 ## Installing on Mac OS 10.13.6
 
 Remark: Current version numbers we used are shown. The framework may work with other versions.
