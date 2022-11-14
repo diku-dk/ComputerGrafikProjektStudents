@@ -305,9 +305,9 @@ int main()
                 glUniform3fv(diffusecolor,      1, glm::value_ptr(DiffuseColor));
                 glUniform3fv(specularcolor,     1, glm::value_ptr(SpecularColor));
                 glUniform1f(shininess, Shininess);
-
-                glDrawArrays(GL_TRIANGLES, 0, NVertices);
-
+                if (NVertices > 0) {
+                    glDrawArrays(GL_TRIANGLES, 0, NVertices);
+                }
                 glBindVertexArray(0);
             glUseProgram(0);
         
