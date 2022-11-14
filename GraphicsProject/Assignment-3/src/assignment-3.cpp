@@ -251,7 +251,9 @@ int main()
                     glUniform3f(housefragmentcolor, housecolor.r, housecolor.g, housecolor.b);
                     glEnableVertexAttribArray(housevertexattribute);
                     glBindVertexArray(HouseVertexArrayID);
-                    glDrawArrays(GL_LINES, 0, NHouseVertices);
+                    if (NHouseVertices > 0) {
+                        glDrawArrays(GL_LINES, 0, NHouseVertices);
+                    }
                     glDisableVertexAttribArray(housevertexattribute);
                 }
                 glUseProgram(0);
