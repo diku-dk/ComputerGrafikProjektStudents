@@ -374,8 +374,10 @@ int main()
             glUniform3f(color, 1.0f, 1.0f, 1.0f);
             glUniformMatrix4fv(ctm, 1, GL_FALSE, glm::value_ptr(CTM));
 
-            glDrawArrays(GL_LINES, 0, Vertices[CurrentCurve].size());
-
+            if (Vertices[CurrentCurve].size() > 0) {
+                glDrawArrays(GL_LINES, 0, Vertices[CurrentCurve].size());
+            }
+            
             glBindVertexArray(0);
             glUseProgram(0);
         
