@@ -1168,7 +1168,9 @@ int main()
                     glFrontFace(GL_CCW);
             
                     // Draw the surfaces
-                    glDrawArrays(GL_TRIANGLES, 0, NVertices[CurrentSurface]);
+                    if (NVertices[CurrentSurface] > 0) {
+                        glDrawArrays(GL_TRIANGLES, 0, NVertices[CurrentSurface]);
+                    }
                 glBindVertexArray(0);
             glUseProgram(0);
         
