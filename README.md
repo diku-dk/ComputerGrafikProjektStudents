@@ -167,19 +167,14 @@ To change target right click any of the 'assignment-X' subprojects and click 'Se
 
 How to install third party dependencies will vary depending on the linux distro that you are using. Even if you are using a different package manager the process should be the same.
 
-**Ubuntu:**
+**Ubuntu 22.04 LTS:**
 ```console  
-  sudo apt install libglew-dev 
-  sudo apt install libglfw-dev 
-  sudo apt install libglm-dev
+  sudo apt install libglew-dev libglfw3-dev libglm-dev 
 ```
 
 **Arch:**
 ```console  
-  sudo pacman -S glew 
-  sudo pacman -S glfw-x11
-  sudo pacman -S glfw-docs
-  sudo pacman -S glm
+  sudo pacman -Syu glew glfw-x11 glfw-doc glm
 ```
 
 **Nix**
