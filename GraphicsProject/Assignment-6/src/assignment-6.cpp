@@ -329,8 +329,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, teapot.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(teapot.Vertices()[0]), GL_STATIC_DRAW);
+            if (teapot.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, teapot.Vertices().size() * 3 * sizeof(float),
+                             glm::value_ptr(teapot.Vertices()[0]), GL_STATIC_DRAW);
+            }
         
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -338,8 +340,11 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, teapot.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(teapot.Normals()[0]), GL_STATIC_DRAW);
+            if (teapot.Normals().size() > 0)
+            {
+                glBufferData(GL_ARRAY_BUFFER, teapot.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(teapot.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -395,8 +400,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, phongsurface.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(phongsurface.Vertices()[0]), GL_STATIC_DRAW);
+            if (phongsurface.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, phongsurface.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(phongsurface.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -404,8 +411,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, phongsurface.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(phongsurface.Normals()[0]), GL_STATIC_DRAW);
+            if (phongsurface.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, phongsurface.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(phongsurface.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -464,8 +473,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, dinisurface.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(dinisurface.Vertices()[0]), GL_STATIC_DRAW);
+            if (dinisurface.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, dinisurface.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(dinisurface.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -473,8 +484,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, dinisurface.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(dinisurface.Normals()[0]), GL_STATIC_DRAW);
+            if (dinisurface.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, dinisurface.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(dinisurface.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -527,8 +540,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, kleinbottom.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinbottom.Vertices()[0]), GL_STATIC_DRAW);
+            if (kleinbottom.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinbottom.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinbottom.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -536,8 +551,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, kleinbottom.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinbottom.Normals()[0]), GL_STATIC_DRAW);
+            if (kleinbottom.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinbottom.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinbottom.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -587,8 +604,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, kleinhandle.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinhandle.Vertices()[0]), GL_STATIC_DRAW);
+            if (kleinhandle.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinhandle.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinhandle.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -596,8 +615,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, kleinhandle.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinhandle.Normals()[0]), GL_STATIC_DRAW);
+            if (kleinhandle.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinhandle.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinhandle.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -649,8 +670,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, kleintop.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleintop.Vertices()[0]), GL_STATIC_DRAW);
+            if (kleintop.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleintop.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleintop.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -658,8 +681,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, kleintop.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleintop.Normals()[0]), GL_STATIC_DRAW);
+            if (kleintop.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleintop.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleintop.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -710,8 +735,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, kleinmiddle.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinmiddle.Vertices()[0]), GL_STATIC_DRAW);
+            if (kleinmiddle.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinmiddle.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinmiddle.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -719,8 +746,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, kleinmiddle.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinmiddle.Normals()[0]), GL_STATIC_DRAW);
+            if (kleinmiddle.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinmiddle.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinmiddle.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -781,8 +810,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, kleinvertices3.size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinvertices3[0]), GL_STATIC_DRAW);
+            if (kleinvertices3.size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinvertices3.size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinvertices3[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -790,8 +821,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, kleinnormals3.size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinnormals3[0]), GL_STATIC_DRAW);
+            if (kleinnormals3.size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinnormals3.size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinnormals3[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -850,8 +883,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, kleinvertices.size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinvertices[0]), GL_STATIC_DRAW);
+            if (kleinvertices.size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinvertices.size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinvertices[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -859,8 +894,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, kleinnormals.size() * 3 * sizeof(float),
-                         glm::value_ptr(kleinnormals[0]), GL_STATIC_DRAW);
+            if (kleinnormals.size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, kleinnormals.size() * 3 * sizeof(float),
+                    glm::value_ptr(kleinnormals[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -935,8 +972,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, rocket.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(rocket.Vertices()[0]), GL_STATIC_DRAW);
+            if (rocket.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, rocket.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(rocket.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -944,8 +983,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, rocket.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(rocket.Normals()[0]), GL_STATIC_DRAW);
+            if (rocket.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, rocket.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(rocket.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -1022,8 +1063,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, pain.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(pain.Vertices()[0]), GL_STATIC_DRAW);
+            if (pain.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, pain.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(pain.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -1031,8 +1074,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, pain.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(pain.Normals()[0]), GL_STATIC_DRAW);
+            if (pain.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, pain.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(pain.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
@@ -1097,8 +1142,10 @@ int main()
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer[CurrentSurface]);
     
             // Give our vertices to OpenGL.
-            glBufferData(GL_ARRAY_BUFFER, patches.Vertices().size() * 3 * sizeof(float),
-                         glm::value_ptr(patches.Vertices()[0]), GL_STATIC_DRAW);
+            if (patches.Vertices().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, patches.Vertices().size() * 3 * sizeof(float),
+                    glm::value_ptr(patches.Vertices()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the vertex Attributes
             glEnableVertexAttribArray(vertexattribute);
@@ -1106,8 +1153,10 @@ int main()
 
             // Give our normals to OpenGL.
             glBindBuffer(GL_ARRAY_BUFFER, normalbuffer[CurrentSurface]);
-            glBufferData(GL_ARRAY_BUFFER, patches.Normals().size() * 3 * sizeof(float),
-                         glm::value_ptr(patches.Normals()[0]), GL_STATIC_DRAW);
+            if (patches.Normals().size() > 0) {
+                glBufferData(GL_ARRAY_BUFFER, patches.Normals().size() * 3 * sizeof(float),
+                    glm::value_ptr(patches.Normals()[0]), GL_STATIC_DRAW);
+            }
 
             // Initialize the normal Attributes
             glEnableVertexAttribArray(normalattribute);
