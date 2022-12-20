@@ -353,9 +353,10 @@ int main()
                 }
     
                 // Give our vertices to OpenGL.
-                glBufferData(GL_ARRAY_BUFFER, Vertices[i].size() * 3 * sizeof(float),
-                             glm::value_ptr(Vertices[i][0]), GL_STATIC_DRAW);
-
+                if (Vertices[i].size() > 0) {
+                    glBufferData(GL_ARRAY_BUFFER, Vertices[i].size() * 3 * sizeof(float),
+                                 glm::value_ptr(Vertices[i][0]), GL_STATIC_DRAW);
+                }
                 // Initialize line segment vertex Attributes
                 GLuint vertexattribute = glGetAttribLocation(lineshaderID, "VertexPosition");
                 glEnableVertexAttribArray(vertexattribute);
