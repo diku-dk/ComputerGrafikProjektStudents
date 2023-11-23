@@ -23,6 +23,8 @@
 #include <glm/gtc/integer.hpp>
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include <glm/gtx/norm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/transform2.hpp>
 #include <glm/gtx/matrix_transform_2d.hpp>
